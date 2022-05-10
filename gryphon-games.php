@@ -21,6 +21,6 @@
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
 function create_blocks_gryphon_games_blocks_init() {
-	register_block_type( __DIR__ . '/blocks/snake/' );
+	register_block_type( __DIR__ . '/blocks/game/' );
 }
 add_action( 'init', 'create_blocks_gryphon_games_blocks_init' );

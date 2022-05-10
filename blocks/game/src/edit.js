@@ -33,5 +33,6 @@ export default function Edit({ attributes, setAttributes }) {
 			value={attributes.message}
 			onChange={(val) => setAttributes({ message: val })}
 		/>
+
 	);
 }
