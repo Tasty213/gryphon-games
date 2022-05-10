@@ -7,12 +7,14 @@
 	"main": "build/index.js",
 	"scripts": {
 		"build": "wp-scripts build",
+		"start": "wp-scripts start",
 		"format": "wp-scripts format",
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip",
-		"start": "wp-scripts start"
+		"start:snake": "wp-scripts start blocks/snake/src/index.js --output-path=blocks/snake/build/",
+		"build:snake": "wp-scripts build blocks/snake/src/index.js --output-path=blocks/snake/build/"
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^23.0.0"
