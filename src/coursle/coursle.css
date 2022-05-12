@@ -18,7 +18,10 @@ div#coursle {
 
 input.coursle_cell {
     display: inline-block;
-    margin: 1px 1px 0 0;
+    text-align: center;
+    color: #000;
+    font-weight: bolder;
+    font-size: large;
 }
 
 input.correct {
