@@ -1,0 +1,23 @@
+{
+    "name": "gryphon-games",
+    "version": "0.0.1",
+    "description": "A collection of games for the Gryphon Newspaper site as wordpress shortcodes, written by students at the University of Leeds",
+    "keywords": [
+        "games",
+        "wordpress"
+    ],
+    "homepage": "https://www.thegryphon.co.uk/",
+    "bugs": "https://www.thegryphon.co.uk/",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "George Sykes",
+            "email": "el18gs@leeds.ac.uk",
+            "url": "https://www.linkedin.com/in/gsykes2/"
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tasty213/gryphon-games"
+    }
+}

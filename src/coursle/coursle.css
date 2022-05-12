@@ -1,4 +1,4 @@
-div#snakeContainer {
+div#coursleContainer {
     background-color: #ccc;
     clear: both;
     display: block;
@@ -6,7 +6,7 @@ div#snakeContainer {
     padding: 0 0 1px 1px;
 }
 
-div#snake {
+div#coursle {
     background-color: transparent;
     border-color: #000;
     border-style: solid;
@@ -16,13 +16,24 @@ div#snake {
     width: 100px;
 }
 
-div.snake_cell {
+input.coursle_cell {
     display: inline-block;
-    float: left;
     margin: 1px 1px 0 0;
 }
 
-span.snakeLabel {
+input.correct {
+    background-color: green;
+}
+
+input.nearly {
+    background-color: yellow;
+}
+
+input.incorrect {
+    background-color: red;
+}
+
+span.coursleLabel {
     border-color: #000;
     border-style: solid;
     border-width: 0 1px 0 0;
@@ -31,12 +42,12 @@ span.snakeLabel {
     padding: 1px 5px;
 }
 
-span.snakeLabelRight {
+span.coursleLabelRight {
     border-width: 0 0 0 1px;
     float: right;
 }
 
-span.snakeInput {
+span.coursleInput {
     background-color: #fff;
     border: 1px solid black;
     display: inline-block;
@@ -45,13 +56,13 @@ span.snakeInput {
     text-align: right;
 }
 
-span.snakeText {
+span.coursleText {
     border: 1px solid transparent;
     display: inline-block;
     padding: 0 2px;
 }
 
-span.snakeButton {
+span.coursleButton {
     background-color: #faa;
     border: 1px solid black;
     cursor: pointer;
@@ -59,7 +70,7 @@ span.snakeButton {
     padding: 0 4px;
 }
 
-span.snakeButton:active {
+span.coursleButton:active {
     background-color: #fbb;
     border: 1px solid black;
     cursor: pointer;

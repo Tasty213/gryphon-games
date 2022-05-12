@@ -14,7 +14,7 @@
  * @package           gryphon-games
  */
 
-include("src/snake/snake.php");
+include("src/coursle/coursle.php");
 
 //  Functions to display a list of all the shortcodes
 function diwp_get_list_of_shortcodes()
