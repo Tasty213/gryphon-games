@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name:       Gryphon Games
  * Description:       A plugin for games on the gryphon site.
@@ -13,14 +14,28 @@
  * @package           gryphon-games
  */
 
-/**
- * Registers the block using the metadata loaded from the `block.json` file.
- * Behind the scenes, it registers also all assets so they can be enqueued
- * through the block editor in the corresponding context.
- *
- * @see https://developer.wordpress.org/reference/functions/register_block_type/
- */
-function create_blocks_gryphon_games_blocks_init() {
-	register_block_type( __DIR__ . '/blocks/game/' );
+include("src/snake/snake.php");
+
+//  Functions to display a list of all the shortcodes
+function diwp_get_list_of_shortcodes()
+{
+
+	// Get the array of all the shortcodes
+	global $shortcode_tags;
+
+	$shortcodes = $shortcode_tags;
+
+	// sort the shortcodes with alphabetical order
+	ksort($shortcodes);
+
+	$shortcode_output = "<ul>";
+
+	foreach ($shortcodes as $shortcode => $value) {
+		$shortcode_output = $shortcode_output . '<li>[' . $shortcode . ']</li>';
+	}
+
+	$shortcode_output = $shortcode_output . "</ul>";
+
+	return $shortcode_output;
 }
-add_action( 'init', 'create_blocks_gryphon_games_blocks_init' );
+add_shortcode('get-shortcode-list', 'diwp_get_list_of_shortcodes');
