@@ -13,10 +13,17 @@ jQuery(document).ready(function() {
   board = new Board(word, 10);
 });
 
+/**
+ *
+ * @return {string}
+ */
 function getRandomWord() {
   return words[Math.floor(Math.random() * words.length)];
 }
 
+/**
+ * Called when a user presses the submit button on the UI
+ */
 function submitGuess() {
   const guess = board.getCurrentGuess();
   console.log(guess);
@@ -29,6 +36,11 @@ function submitGuess() {
   }
 }
 
+/**
+ *
+ * @param {string} character
+ * @param {number} index
+ */
 function checkCharacter(character, index) {
   if (character == '') {
     throw new CoursleError('One of the entered cells was empty');
