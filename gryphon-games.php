@@ -15,27 +15,3 @@
  */
 
 include("src/coursle/coursle.php");
-
-//  Functions to display a list of all the shortcodes
-function diwp_get_list_of_shortcodes()
-{
-
-	// Get the array of all the shortcodes
-	global $shortcode_tags;
-
-	$shortcodes = $shortcode_tags;
-
-	// sort the shortcodes with alphabetical order
-	ksort($shortcodes);
-
-	$shortcode_output = "<ul>";
-
-	foreach ($shortcodes as $shortcode => $value) {
-		$shortcode_output = $shortcode_output . '<li>[' . $shortcode . ']</li>';
-	}
-
-	$shortcode_output = $shortcode_output . "</ul>";
-
-	return $shortcode_output;
-}
-add_shortcode('get-shortcode-list', 'diwp_get_list_of_shortcodes');
