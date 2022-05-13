@@ -19,5 +19,9 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/tasty213/gryphon-games"
+    },
+    "devDependencies": {
+        "eslint": "^8.15.0",
+        "eslint-config-google": "^0.14.0"
     }
 }
