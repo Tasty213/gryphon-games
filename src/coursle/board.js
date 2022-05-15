@@ -100,7 +100,8 @@ class Board {
    */
   addBoardCell(cellNumber, rowId) {
     const cellId = `coursle_cell_${cellNumber}`;
-    jQuery(`#${rowId}`).append(`<input type="text" value="" maxlength="1" class="coursle_cell" disabled id="${cellId}"></div>`);
+    jQuery(`#${rowId}`)
+        .append(`<input type="text" value="" maxlength="1" class="coursle_cell" disabled id="${cellId}"></div>`);
   }
 
   /**
