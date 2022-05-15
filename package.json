@@ -35,6 +35,10 @@
         "jquery": "^3.6.0"
     },
     "jest": {
-        "testEnvironment": "jsdom"
+        "testEnvironment": "jsdom",
+        "collectCoverage": true,
+        "collectCoverageFrom": [
+            "./src/**"
+        ]
     }
 }

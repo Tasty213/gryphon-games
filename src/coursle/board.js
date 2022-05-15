@@ -1,4 +1,3 @@
-module.exports = Board;
 /**
  * @class Board
  */
@@ -65,7 +64,7 @@ class Board {
   static getGameSize(cellSize, padding, maxGameWidth) {
     const width = maxGameWidth;
     const height = (cellSize * NUMBER_OF_GUESSES) +
-                   (NUMBER_OF_GUESSES * padding * 2);
+    (NUMBER_OF_GUESSES * padding * 2);
     return {'width': width, 'height': height};
   }
 
@@ -194,3 +193,5 @@ class Board {
   }
 };
 
+
+module.exports = Board;

@@ -1,4 +1,5 @@
-/* exported CoursleError */
+const Board = require('./board.js');
+
 /**
  * Class for coursle erors require that a board has already been made
  * @extends Error
@@ -14,3 +15,5 @@ class CoursleError extends Error {
     Board.setStatutsMessage(message);
   }
 }
+
+module.exports = CoursleError;
