@@ -1,3 +1,4 @@
+/* exported CoursleError */
 /**
  * Class for coursle erors require that a board has already been made
  * @extends Error

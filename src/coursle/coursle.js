@@ -1,3 +1,4 @@
+/* exported submitGuess*/
 NUMBER_OF_GUESSES = 5;
 ROW_PADDING = 10;
 COLUMN_PADDING = 10;
