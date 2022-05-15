@@ -1,4 +1,4 @@
-/* exported Board*/
+module.exports = Board;
 /**
  * @class Board
  */
@@ -194,6 +194,3 @@ class Board {
   }
 };
 
-/* exported Board */
-
-module.exports = Board;
