@@ -51,7 +51,6 @@ class Board {
    * @return {number}
    */
   static getCellSize(word, gameWidth, padding) {
-    console.log(gameWidth);
     const paddingWidth = (word.length + 1) * padding * 2;
     return Math.floor((gameWidth - paddingWidth) / (word.length + 1));
   }
@@ -193,6 +192,8 @@ class Board {
   static setStatutsMessage(message) {
     jQuery('#coursleMessage').text(message);
   }
-}
+};
 
 /* exported Board */
+
+module.exports = Board;
