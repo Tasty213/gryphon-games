@@ -65,21 +65,25 @@ describe('Board class non-static tests', ()=> {
       board.setCellClass(-1, -1, 'test class');
     }).toThrowError(CoursleError);
   });*/
-  test(`get guess returns correct guess`, () => {
-    board = constructCoursleTestEnvironment('Test', 4, 10);
-    const cells = jQuery(`#coursle_row_0`).find('input.coursle_cell').toArray();
-    cells.forEach((cell) => {
-      cell.value = 'F';
+  describe('Get Guess Works as expected', ()=> {
+    test(`get guess returns correct guess`, () => {
+      board = constructCoursleTestEnvironment('Test', 4, 10);
+      const cells = jQuery(`#coursle_row_0`)
+          .find('input.coursle_cell').toArray();
+      cells.forEach((cell) => {
+        cell.value = 'F';
+      });
+      expect(board.getCurrentGuess()).toBe('ffff');
     });
-    expect(board.getCurrentGuess()).toBe('ffff');
-  });
-  test(`get guess on empty cells returns ' '`, () => {
-    board = constructCoursleTestEnvironment('Test', 4, 10);
-    const cells = jQuery(`#coursle_row_0`).find('input.coursle_cell').toArray();
-    cells.forEach((cell) => {
-      cell.value = '';
+    test(`get guess on empty cells returns ' '`, () => {
+      board = constructCoursleTestEnvironment('Test', 4, 10);
+      const cells = jQuery(`#coursle_row_0`)
+          .find('input.coursle_cell').toArray();
+      cells.forEach((cell) => {
+        cell.value = '';
+      });
+      expect(board.getCurrentGuess()).toBe('    ');
     });
-    expect(board.getCurrentGuess()).toBe('    ');
   });
   describe(`Win game sets correct classes and message`, () => {
     board = constructCoursleTestEnvironment('Test', 4, 10);
@@ -94,7 +98,6 @@ describe('Board class non-static tests', ()=> {
       const rowId = `#coursle_row_0`;
       let cells = jQuery(rowId).find('input.coursle_cell').toArray();
       cells = cells.map((cell) => cell.classList.contains('correct'));
-      console.log(cells);
       expect(cells).toEqual(expect.not.arrayContaining([undefined]));
     });
   });

@@ -148,7 +148,6 @@ class Board {
    * Increment the row that is enabled
    */
   incrementEnabledRow() {
-    console.log('Incrementing Row');
     let rowId = `#coursle_row_${this.guessCount}`;
     jQuery(rowId).find('input.coursle_cell').attr('disabled', true);
 
