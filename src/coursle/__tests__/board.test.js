@@ -65,7 +65,7 @@ describe('Board class non-static tests', ()=> {
       board.setCellClass(-1, -1, 'test class');
     }).toThrowError(CoursleError);
   });*/
-  describe.skip('Get Guess Works as expected', ()=> {
+  describe('Get Guess Works as expected', ()=> {
     test(`get guess returns correct guess`, () => {
       board = constructCoursleTestEnvironment('Test', 4, 10);
       const cells = jQuery(`#coursle_row_0`)
