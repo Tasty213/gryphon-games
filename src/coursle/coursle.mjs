@@ -34,7 +34,7 @@ export class Coursle {
  * Called when a user presses the submit button on the UI
  */
   submitGuess() {
-    const guess = this.board.getCurrentGuess(this.guessCount);
+    const guess = this.getGuess(this.guessCount);
     if (guess.join('') == this.word) {
       this.board.winGame(this.guessCount);
     } else {

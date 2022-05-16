@@ -163,22 +163,6 @@ export class Board {
   }
 
   /**
-   * @param {number} guessCount
-   * @return {string}
-   */
-  getCurrentGuess(guessCount) {
-    const rowId = `#coursle_row_${guessCount}`;
-    const currentRow = jQuery(rowId).find('input.coursle_cell').toArray();
-    const guess = currentRow.map(function(cell) {
-      if (cell.value == '') {
-        cell.value = ' ';
-      }
-      return cell.value.toLowerCase();
-    });
-    return guess;
-  }
-
-  /**
    * Lock the current row and display a message
    * saying that the user ahs won the game
    * @param {number} guessCount
