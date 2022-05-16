@@ -52,9 +52,7 @@ export class Coursle {
  * @param {number} index
  */
   checkCharacter(character, index) {
-    if (character == '') {
-      throw new CoursleError('One of the entered cells was empty');
-    } else if (this.word[index] == character) {
+    if (this.word[index] == character) {
       this.board.setCellClass(this.guessCount, index, 'correct');
     } else if (this.word.includes(character)) {
       this.board.setCellClass(this.guessCount, index, 'nearly');

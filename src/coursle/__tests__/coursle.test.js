@@ -49,7 +49,7 @@ describe('Get Guess Works as expected', () => {
 
 describe('Check the submit function', () => {
   let coursle;
-  const wordsList = ['ffff'];
+  const wordsList = ['abcd'];
   beforeAll(() => {
     jQuery('#coursle').empty();
     coursle = new Coursle(wordsList);
@@ -64,5 +64,18 @@ describe('Check the submit function', () => {
     coursle.board.winGame = jest.fn();
     coursle.submitGuess();
     expect(coursle.board.winGame).toBeCalled();
+  });
+
+  test('Incorrect answer triggers win', () => {
+    const rowId = `#coursle_row_${coursle.guessCount}`;
+    const currentRow = jQuery(rowId).find('input.coursle_cell').toArray();
+    currentRow.forEach(function(cell, index) {
+      cell.value = ' ';
+    });
+    coursle.checkCharacter = jest.fn();
+    coursle.board.incrementEnabled = jest.fn();
+    coursle.submitGuess();
+    expect(coursle.checkCharacter).toBeCalledTimes(4);
+    expect(coursle.board.incrementEnabled).toBeCalledTimes(1);
   });
 });
