@@ -6,16 +6,13 @@ import {jest} from '@jest/globals';
 
 describe('Coursle constructor works', ()=>{
   let coursle;
-  const wordsList = ['maths', 'physics', 'english'];
-  const padding = 10;
-  const maxGameWidth = 600;
-  const numberOfGuesses= 4;
+  const defaultWordsList = ['maths', 'physics', 'english'];
   beforeAll(()=>{
-    coursle = new Coursle(wordsList, padding, maxGameWidth, numberOfGuesses);
+    coursle = new Coursle();
   });
 
   test('random word is set', () => {
-    expect(wordsList).toContain(coursle.word);
+    expect(defaultWordsList).toContain(coursle.word);
   });
 
   test('a game board has been made', () => {
