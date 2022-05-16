@@ -79,3 +79,20 @@ describe('Check the submit function', () => {
     expect(coursle.board.incrementEnabledRow).toBeCalledTimes(1);
   });
 });
+
+describe('checkCharacter method works', ()=>{
+  const testCharacters = [
+    ['a', 0, 'coursle_cell correct'],
+    ['a', 1, 'coursle_cell nearly'],
+    ['e', 0, 'coursle_cell incorrect'],
+  ];
+  const wordsList = ['abcd'];
+
+  test.each(testCharacters)('Chacter %d is %d', (character, index, cssClass)=>{
+    jQuery('#coursle').empty();
+    coursle = new Coursle(wordsList);
+    coursle.checkCharacter(character, index);
+    const cell = jQuery('#coursle_row_0').find(`#coursle_cell_${index}`);
+    expect(cell.attr('class')).toStrictEqual(cssClass);
+  });
+});
