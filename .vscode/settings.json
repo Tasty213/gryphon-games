@@ -1,0 +1,13 @@
+{
+    "jest.jestCommandLine": "npm run test --",
+    "jest.rootPath": "",
+    "jest.autoRun": {
+        "watch": true,
+        "onStartup": [
+            "all-tests"
+        ]
+    },
+    "jest.nodeEnv": {
+        "NODE_OPTIONS": "--experimental-vm-modules"
+    }
+}

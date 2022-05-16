@@ -26,13 +26,27 @@ function coursle_option_page()
 
 /* SHORTCODE */
 
+function add_type_attribute($tag, $handle, $src)
+{
+	// if not your script, do nothing and return original $tag
+	$coursleScripts = array("coursle", "coursle_class", "coursle_board", "coursle_error");
+	if (!in_array($handle, $coursleScripts)) {
+		return $tag;
+	}
+	// change the script tag by adding type="module" and return it.
+	$tag = '<script type="module" src="' . esc_url($src) . '"></script>';
+	return $tag;
+}
+
 function playcoursle($atts = array(), $content = null, $tag = '')
 {
+	error_log("Play coursle was run");
 	wp_enqueue_style('coursle', plugins_url() . '/gryphon-games/src/coursle/coursle.css');
-	wp_enqueue_script('coursle', plugins_url() . '/gryphon-games/src/coursle/coursle.js', array('jquery'));
+	wp_enqueue_script('coursle', plugins_url() . '/gryphon-games/src/coursle/index.js', array('jquery'));
+	wp_enqueue_script('coursle_class', plugins_url() . '/gryphon-games/src/coursle/coursle.js', array('jquery'));
 	wp_enqueue_script('coursle_board', plugins_url() . '/gryphon-games/src/coursle/board.js', array('jquery'));
 	wp_enqueue_script('coursle_error', plugins_url() . '/gryphon-games/src/coursle/errors.js', array('jquery'));
-
+	add_filter('script_loader_tag', 'add_type_attribute', 10, 3);
 
 	if (is_array($atts))
 		wp_localize_script('coursle', 'coursleSettings', $atts);
@@ -40,7 +54,7 @@ function playcoursle($atts = array(), $content = null, $tag = '')
 		wp_localize_script('coursle', 'coursleSettings', array());
 
 	$return = '<div id="coursleContainer">';
-	$return .= '<span class="coursleLabel"><span class="coursleButton" onclick="submitGuess();">Submit</span></span>';
+	$return .= '<span class="coursleLabel"><span class="coursleButton" onclick="coursle.submitGuess();">Submit</span></span>';
 	$return .= '<span class="coursleLabel"><span class="coursleText" id="coursleMessage">Press the submit button to make a guess.</span></span>';
 	$return .= '<div id="coursle"></div>';
 	$return .= '</div><br style="clear:both;"/>';

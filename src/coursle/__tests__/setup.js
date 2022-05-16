@@ -1,24 +1,20 @@
 /* Global document */
-const Board = require('../board.js');
-// const CoursleError = require('../errors.js');
-global.jQuery = require('jQuery');
+import {Board} from '../board.mjs';
 
 /**
  * Creates a coursle board to test on
  * @param {string} word
- * @param {number} numberOfGuesses
  * @param {number} padding
+ * @param {number} maxGameWidth
+ * @param {number} numberOfGuesses
  * @return {Board}
  */
-function beforeEach(word, numberOfGuesses, padding) {
-  document.body.innerHTML = $return = `
+export function constructCoursleTestEnvironment(word, padding, maxGameWidth, numberOfGuesses) {
+  document.body.innerHTML = `
   <div id="coursleContainer" style="width: 1000px;">
     <span class="coursleLabel"><span class="coursleButton" onclick="submitGuess();">Submit</span></span>
     <span class="coursleLabel"><span class="coursleText" id="coursleMessage">Press the submit button to make a guess.</span></span>
     <div id="coursle"></div>
   </div><br style="clear:both;"/>`;
-  globalThis.NUMBER_OF_GUESSES = numberOfGuesses;
-  return new Board(word, padding);
+  return new Board(word, padding, maxGameWidth, numberOfGuesses);
 }
-
-module.exports = beforeEach;

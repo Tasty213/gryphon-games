@@ -1,15 +1,13 @@
 /* Global document */
-const constructCoursleTestEnvironment = require('./setup.js');
-// const CoursleError = require('../errors.js');
-global.jQuery = require('jQuery');
+import {constructCoursleTestEnvironment} from './setup.js';
 
 describe('Board class non-static tests', ()=> {
   test('Board constructor makes parameters with expected sizes', () => {
-    board = constructCoursleTestEnvironment('test', 4, 10);
+    const board = constructCoursleTestEnvironment('test', 10, 600, 4);
     expect(board.parameters).toStrictEqual({
-      maxGameWidth: 1000,
-      cellSize: 180,
-      gameSize: {width: 1000, height: 800},
+      maxGameWidth: 600,
+      cellSize: 100,
+      gameSize: {width: 600, height: 480},
       padding: 10,
     });
   });
@@ -17,7 +15,7 @@ describe('Board class non-static tests', ()=> {
     const expectedRowsCases = [1, 2, 3, 4, 100];
     test.each(expectedRowsCases)(`creates %p rows`,
         (numberOfGuesses) => {
-          board = constructCoursleTestEnvironment('test', numberOfGuesses, 10);
+          constructCoursleTestEnvironment('test', 10, 600, numberOfGuesses);
           expect(jQuery.find('div.coursle_row').length).toBe(numberOfGuesses);
         });
   });
@@ -30,7 +28,7 @@ describe('Board class non-static tests', ()=> {
     ];
     test.each(initialCase)(`Check that row %p is %p`,
         (rowId, expected)=>{
-          board = constructCoursleTestEnvironment('Test', 4, 10);
+          constructCoursleTestEnvironment('test', 10, 600, 4);
           expect(jQuery(`#coursle_row_${rowId}`)
               .find('input.coursle_cell')
               .attr('disabled')).toBe(expected);
@@ -43,17 +41,19 @@ describe('Board class non-static tests', ()=> {
       [2, 'disabled'],
       [3, 'disabled'],
     ];
+    beforeAll(() => {
+      const board = constructCoursleTestEnvironment('test', 10, 600, 4);
+      board.incrementEnabledRow(0);
+    });
 
     test.each(initialCase)(`Check that row %p is %p`,
         (rowId, expected) => {
-          board = constructCoursleTestEnvironment('Test', 4, 10);
-          board.incrementEnabledRow();
           expect(jQuery(`#coursle_row_${rowId}`)
               .find('input.coursle_cell').attr('disabled')).toBe(expected);
         });
   });
   test(`setCellClass correctly mutates input boxes`, () => {
-    board = constructCoursleTestEnvironment('Test', 4, 10);
+    const board = constructCoursleTestEnvironment('test', 10, 600, 4);
     board.setCellClass(0, 0, 'test class');
     expect(jQuery(`#coursle_row_0`)
         .find('#coursle_cell_0').hasClass('test class')).toBe(true);
@@ -67,26 +67,26 @@ describe('Board class non-static tests', ()=> {
   });*/
   describe('Get Guess Works as expected', ()=> {
     test(`get guess returns correct guess`, () => {
-      board = constructCoursleTestEnvironment('Test', 4, 10);
+      const board = constructCoursleTestEnvironment('test', 10, 600, 4);
       const cells = jQuery(`#coursle_row_0`)
           .find('input.coursle_cell').toArray();
       cells.forEach((cell) => {
         cell.value = 'F';
       });
-      expect(board.getCurrentGuess()).toBe('ffff');
+      expect(board.getCurrentGuess(0)).toStrictEqual(['f', 'f', 'f', 'f']);
     });
     test(`get guess on empty cells returns ' '`, () => {
-      board = constructCoursleTestEnvironment('Test', 4, 10);
+      const board = constructCoursleTestEnvironment('test', 10, 600, 4);
       const cells = jQuery(`#coursle_row_0`)
           .find('input.coursle_cell').toArray();
       cells.forEach((cell) => {
         cell.value = '';
       });
-      expect(board.getCurrentGuess()).toBe('    ');
+      expect(board.getCurrentGuess(0)).toStrictEqual([' ', ' ', ' ', ' ']);
     });
   });
   describe(`Win game sets correct classes and message`, () => {
-    board = constructCoursleTestEnvironment('Test', 4, 10);
+    const board = constructCoursleTestEnvironment('test', 10, 600, 4);
     board.winGame();
     test('Test that input cells are disabled', ()=>{
       const rowId = `#coursle_row_0`;

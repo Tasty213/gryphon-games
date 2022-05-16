@@ -1,10 +1,10 @@
-const Board = require('./board.js');
+import {Board} from './board.mjs';
 
 /**
  * Class for coursle erors require that a board has already been made
  * @extends Error
  */
-class CoursleError extends Error {
+export class CoursleError extends Error {
   /**
    *
    * @param {string} message
@@ -15,5 +15,3 @@ class CoursleError extends Error {
     Board.setStatutsMessage(message);
   }
 }
-
-module.exports = CoursleError;

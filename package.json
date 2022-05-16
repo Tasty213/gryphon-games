@@ -21,6 +21,7 @@
         "url": "https://github.com/tasty213/gryphon-games"
     },
     "devDependencies": {
+        "cross-env": "^7.0.3",
         "eslint": "^8.15.0",
         "eslint-config-google": "^0.14.0",
         "jest": "^28.1.0",
@@ -28,7 +29,7 @@
     },
     "scripts": {
         "lint": "eslint **/*.js --ignore-pattern node_modules/",
-        "test": "jest"
+        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
     },
     "dependencies": {
         "@types/jest": "^27.5.1",
@@ -47,6 +48,10 @@
         ],
         "modulePathIgnorePatterns": [
             "setup.js"
+        ],
+        "setupFiles": [
+            "./setupJest.js"
         ]
-    }
+    },
+    "type": "module"
 }

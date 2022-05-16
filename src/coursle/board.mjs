@@ -1,17 +1,17 @@
 /**
  * @class Board
  */
-class Board {
-  guessCount = 0;
-
+export class Board {
   /**
    *
    * @param {String} word
    * @param {number} padding
+   * @param {number} maxGameWidth
+   * @param {number} numberOfGuesses
    */
-  constructor(word, padding) {
-    this.parameters = Board.getGameParameters(word, padding);
-    this.constructRows(word);
+  constructor(word, padding, maxGameWidth, numberOfGuesses) {
+    this.parameters = Board.getGameParameters(word, padding, maxGameWidth, numberOfGuesses);
+    this.constructRows(word, numberOfGuesses);
     this.setBoardSize();
     this.setFirstRowEnabled();
   }
@@ -20,12 +20,15 @@ class Board {
    *
    * @param {String} word
    * @param {number} padding
+   * @param {number} maxGameWidth
+   * @param {number} numberOfGuesses
+   *
    * @return {object}
    */
-  static getGameParameters(word, padding) {
-    const maxGameWidth = Board.getContainerWidth();
+  static getGameParameters(word, padding, maxGameWidth, numberOfGuesses) {
+    maxGameWidth = Math.min(Board.getContainerWidth(), maxGameWidth);
     const cellSize = Board.getCellSize(word, maxGameWidth, padding);
-    const gameSize = Board.getGameSize(cellSize, padding, maxGameWidth);
+    const gameSize = Board.getGameSize(cellSize, padding, maxGameWidth, numberOfGuesses);
     return {
       'maxGameWidth': maxGameWidth,
       'cellSize': cellSize,
@@ -59,21 +62,23 @@ class Board {
    * @param {number} cellSize
    * @param {number} padding
    * @param {number} maxGameWidth
+   * @param {number} numberOfGuesses
    * @return {Object}
    */
-  static getGameSize(cellSize, padding, maxGameWidth) {
+  static getGameSize(cellSize, padding, maxGameWidth, numberOfGuesses) {
     const width = maxGameWidth;
-    const height = (cellSize * NUMBER_OF_GUESSES) +
-    (NUMBER_OF_GUESSES * padding * 2);
+    const height = (cellSize * numberOfGuesses) +
+      (numberOfGuesses * padding * 2);
     return {'width': width, 'height': height};
   }
 
   /**
    *
    * @param {string} word
+   * @param {number} numberOfGuesses
    */
-  constructRows(word) {
-    for (let y = 0; y < NUMBER_OF_GUESSES; y++) {
+  constructRows(word, numberOfGuesses) {
+    for (let y = 0; y < numberOfGuesses; y++) {
       this.addBoardRow(y, word);
     }
   }
@@ -129,7 +134,7 @@ class Board {
    * Set the first row of the board to enabled
    */
   setFirstRowEnabled() {
-    jQuery('#coursle_row_0').find('input.coursle_cell').removeAttr('disabled');
+    jQuery('#coursle_row_0').find('input.coursle_cell').prop('disabled', false);
   }
 
   /**
@@ -146,39 +151,41 @@ class Board {
 
   /**
    * Increment the row that is enabled
+   * @param {number} guessCount
    */
-  incrementEnabledRow() {
-    let rowId = `#coursle_row_${this.guessCount}`;
-    jQuery(rowId).find('input.coursle_cell').attr('disabled', true);
+  incrementEnabledRow(guessCount) {
+    let rowId = `#coursle_row_${guessCount}`;
+    jQuery(rowId).find('input.coursle_cell').prop('disabled', true);
 
-    this.guessCount++;
-    rowId = `#coursle_row_${this.guessCount}`;
-    jQuery(rowId).find('input.coursle_cell').removeAttr('disabled');
+    guessCount++;
+    rowId = `#coursle_row_${guessCount}`;
+    jQuery(rowId).find('input.coursle_cell').prop('disabled', false);
   }
 
   /**
-   *
+   * @param {number} guessCount
    * @return {string}
    */
-  getCurrentGuess() {
-    const rowId = `#coursle_row_${this.guessCount}`;
+  getCurrentGuess(guessCount) {
+    const rowId = `#coursle_row_${guessCount}`;
     const currentRow = jQuery(rowId).find('input.coursle_cell').toArray();
     const guess = currentRow.map(function(cell) {
       if (cell.value == '') {
         cell.value = ' ';
       }
-      return cell.value;
+      return cell.value.toLowerCase();
     });
-    return guess.join('').toLowerCase();
+    return guess;
   }
 
   /**
    * Lock the current row and display a message
    * saying that the user ahs won the game
+   * @param {number} guessCount
    */
-  winGame() {
-    const rowId = `#coursle_row_${this.guessCount}`;
-    jQuery(rowId).find('input.coursle_cell').attr('disabled', true);
+  winGame(guessCount) {
+    const rowId = `#coursle_row_${guessCount}`;
+    jQuery(rowId).find('input.coursle_cell').prop('disabled', true);
     jQuery(rowId).find('input.coursle_cell').addClass('correct');
     Board.setStatutsMessage('You Win!!!');
   }
@@ -191,6 +198,3 @@ class Board {
     jQuery('#coursleMessage').text(message);
   }
 };
-
-
-module.exports = Board;

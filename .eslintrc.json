@@ -8,7 +8,7 @@
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
-        "sourceType": "script"
+        "sourceType": "module"
     },
     "rules": {
         "linebreak-style": "off",
