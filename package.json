@@ -48,9 +48,6 @@
         ],
         "modulePathIgnorePatterns": [
             "setup.js"
-        ],
-        "setupFiles": [
-            "./setupJest.js"
         ]
     },
     "type": "module"

@@ -1,7 +1,6 @@
 {
     "recommendations": [
         "xdebug.php-debug",
-        "Orta.vscode-jest",
         "dbaeumer.vscode-eslint"
     ]
 }

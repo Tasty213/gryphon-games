@@ -43,9 +43,9 @@ function playcoursle($atts = array(), $content = null, $tag = '')
 	error_log("Play coursle was run");
 	wp_enqueue_style('coursle', plugins_url() . '/gryphon-games/src/coursle/coursle.css');
 	wp_enqueue_script('coursle', plugins_url() . '/gryphon-games/src/coursle/index.js', array('jquery'));
-	wp_enqueue_script('coursle_class', plugins_url() . '/gryphon-games/src/coursle/coursle.js', array('jquery'));
-	wp_enqueue_script('coursle_board', plugins_url() . '/gryphon-games/src/coursle/board.js', array('jquery'));
-	wp_enqueue_script('coursle_error', plugins_url() . '/gryphon-games/src/coursle/errors.js', array('jquery'));
+	//wp_enqueue_script('coursle_class', plugins_url() . '/gryphon-games/src/coursle/coursle.js', array('jquery'));
+	//wp_enqueue_script('coursle_board', plugins_url() . '/gryphon-games/src/coursle/board.js', array('jquery'));
+	//wp_enqueue_script('coursle_error', plugins_url() . '/gryphon-games/src/coursle/errors.js', array('jquery'));
 	add_filter('script_loader_tag', 'add_type_attribute', 10, 3);
 
 	if (is_array($atts))

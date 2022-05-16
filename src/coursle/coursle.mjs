@@ -8,9 +8,14 @@ export class Coursle {
    * @param {Array.string} words
    * @param {number} padding
    * @param {number} maxGameWidth
+   * @param {number} numberOfGuesses
    */
-  constructor(words, padding, maxGameWidth) {
-    this.numberOfGuesses = 5;
+  constructor(
+      words = ['maths', 'physics', 'english'],
+      padding = 10,
+      maxGameWidth = 600,
+      numberOfGuesses = 4) {
+    this.numberOfGuesses = numberOfGuesses;
     this.guessCount = 0;
 
     this.word = this.getRandomWord(words);
@@ -56,5 +61,21 @@ export class Coursle {
     } else {
       this.board.setCellClass(this.guessCount, index, 'incorrect');
     }
+  }
+
+  /**
+   * @param {number} guessCount
+   * @return {string}
+   */
+  getGuess() {
+    const rowId = `#coursle_row_${this.guessCount}`;
+    const currentRow = jQuery(rowId).find('input.coursle_cell').toArray();
+    const guess = currentRow.map(function(cell) {
+      if (cell.value == '') {
+        cell.value = ' ';
+      }
+      return cell.value.toLowerCase();
+    });
+    return guess;
   }
 }
