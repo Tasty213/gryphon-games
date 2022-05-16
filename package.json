@@ -39,6 +39,14 @@
         "collectCoverage": true,
         "collectCoverageFrom": [
             "./src/**"
+        ],
+        "coverageReporters": [
+            "text",
+            "html",
+            "lcov"
+        ],
+        "modulePathIgnorePatterns": [
+            "setup.js"
         ]
     }
 }

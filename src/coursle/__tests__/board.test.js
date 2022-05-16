@@ -1,5 +1,5 @@
 /* Global document */
-const Board = require('../board.js');
+const constructCoursleTestEnvironment = require('./setup.js');
 // const CoursleError = require('../errors.js');
 global.jQuery = require('jQuery');
 
@@ -65,7 +65,7 @@ describe('Board class non-static tests', ()=> {
       board.setCellClass(-1, -1, 'test class');
     }).toThrowError(CoursleError);
   });*/
-  describe('Get Guess Works as expected', ()=> {
+  describe.skip('Get Guess Works as expected', ()=> {
     test(`get guess returns correct guess`, () => {
       board = constructCoursleTestEnvironment('Test', 4, 10);
       const cells = jQuery(`#coursle_row_0`)
@@ -102,21 +102,3 @@ describe('Board class non-static tests', ()=> {
     });
   });
 });
-
-/**
- * Creates a coursle board to test on
- * @param {string} word
- * @param {number} numberOfGuesses
- * @param {number} padding
- * @return {Board}
- */
-function constructCoursleTestEnvironment(word, numberOfGuesses, padding) {
-  document.body.innerHTML = $return = `
-  <div id="coursleContainer" style="width: 1000px;">
-    <span class="coursleLabel"><span class="coursleButton" onclick="submitGuess();">Submit</span></span>
-    <span class="coursleLabel"><span class="coursleText" id="coursleMessage">Press the submit button to make a guess.</span></span>
-    <div id="coursle"></div>
-  </div><br style="clear:both;"/>`;
-  globalThis.NUMBER_OF_GUESSES = numberOfGuesses;
-  return new Board(word, padding);
-}
