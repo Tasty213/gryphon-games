@@ -46,7 +46,8 @@
         "collectCoverage": true,
         "collectCoverageFrom": [
             "./src/**",
-            "!**/index.js"
+            "!**/index.js",
+            "!**/webpack.config.js"
         ],
         "coverageReporters": [
             "text",
