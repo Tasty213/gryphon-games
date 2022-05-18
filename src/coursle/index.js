@@ -1,4 +1,6 @@
 import {Coursle} from './coursle.mjs';
+import './coursle.css';
+import './coursle.php';
 
 const WORDS_LIST = ['maths', 'physics', 'english'];
 const PADDING = 10;
