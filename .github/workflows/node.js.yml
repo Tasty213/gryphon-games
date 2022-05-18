@@ -48,7 +48,7 @@ jobs:
         # Filename for the release
     
     - run: npm ci
-    - run: npm run build
+    - run: npm run start
     - name: Zip Release
       uses: TheDoctor0/zip-release@0.6.2
       with: 
