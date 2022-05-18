@@ -41,7 +41,7 @@ function add_type_attribute($tag, $handle, $src)
 function playcoursle($atts = array(), $content = null, $tag = '')
 {
 	error_log("Play coursle was run");
-	wp_enqueue_script('coursle', plugins_url() . '/dist/coursle/bundle.js', array('jquery'));
+	wp_enqueue_script('coursle', plugins_url() . '/gryphon-games-dist/coursle/bundle.js', array('jquery'));
 	add_filter('script_loader_tag', 'add_type_attribute', 10, 3);
 
 	if (is_array($atts))
