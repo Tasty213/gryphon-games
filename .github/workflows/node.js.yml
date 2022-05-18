@@ -48,10 +48,10 @@ jobs:
     - name: Zip Release
       uses: TheDoctor0/zip-release@0.6.2
       with: 
-        filename: "$GITHUB_REF_NAME-$GITHUB_RUN_ID.zip" # default is release.zip
+        filename: "${GITHUB_REF_NAME}-${GITHUB_RUN_ID}.zip" # default is release.zip
         path: "./gryphon-games-dist/"
     - name: Add zipped plugin as artifact
       uses: actions/upload-artifact@v3
       with:
-        name: "$GITHUB_REF_NAME-$GITHUB_RUN_ID.zip"
-        path: "$GITHUB_REF_NAME-$GITHUB_RUN_ID.zip"
+        name: "${GITHUB_REF_NAME}-${GITHUB_RUN_ID}.zip"
+        path: "${GITHUB_REF_NAME}-${GITHUB_RUN_ID}.zip"
