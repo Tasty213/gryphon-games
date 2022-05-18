@@ -50,8 +50,8 @@ jobs:
       with: 
         filename: "$GITHUB_REF_NAME-$GITHUB_RUN_ID.zip" # default is release.zip
         path: "./gryphon-games-dist/"
-    
-    - uses: ncipollo/release-action@v1
+    - name: Add zipped plugin as artifact
+      uses: actions/upload-artifact@v3
       with:
-        artifacts: "$GITHUB_REF_NAME-$GITHUB_RUN_ID.zip"
-        token: ${{ secrets.GITHUB_TOKEN }}
+        name: "$GITHUB_REF_NAME-$GITHUB_RUN_ID.zip"
+        path: "$GITHUB_REF_NAME-$GITHUB_RUN_ID.zip"
