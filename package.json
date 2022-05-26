@@ -35,7 +35,9 @@
     "scripts": {
         "lint": "eslint **/*.js --ignore-pattern node_modules/",
         "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-        "start": "webpack --mode=none"
+        "start": "wp-env start",
+        "build:dev": "webpack --mode=none",
+        "build:prod": "webpack --mode=production"
     },
     "dependencies": {
         "@types/jest": "^27.5.1",

@@ -12,6 +12,7 @@ const mainConfig = {
   output: {
     path: path.resolve(__dirname, './gryphon-games-dist'),
     filename: 'bundle.js',
+    clean: true,
   },
   module: {
     rules: [
