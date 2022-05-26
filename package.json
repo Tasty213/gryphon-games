@@ -22,6 +22,7 @@
         "url": "https://github.com/tasty213/gryphon-games"
     },
     "devDependencies": {
+        "@wordpress/env": "^4.7.0",
         "cross-env": "^7.0.3",
         "css-loader": "^6.7.1",
         "eslint": "^8.15.0",
