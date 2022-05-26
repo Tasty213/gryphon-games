@@ -14,4 +14,4 @@
  * @package           gryphon-games
  */
 
-include("src/coursle/coursle.php");
+include("coursle/coursle.php");

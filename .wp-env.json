@@ -1,6 +1,6 @@
 {
-    "core": null,
+    "core": "https://en-gb.wordpress.org/wordpress-3.5-en_GB.zip",
     "plugins": [
-        "."
+        "./gryphon-games-dist/"
     ]
 }
