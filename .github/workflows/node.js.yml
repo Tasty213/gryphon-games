@@ -50,7 +50,7 @@ jobs:
       with: 
         directory: ./gryphon-games-dist/
         type: zip
-        filename: ${{ github.GITHUB_REF_NAME }}-${{ github.GITHUB_RUN_ID }}.zip # default is release.zip
+        filename: ${{ github.ref_name }}-${{ github.run_id }}.zip # default is release.zip
         path: ./gryphon-games-dist/
     - name: Add zipped plugin as artifact
       uses: actions/upload-artifact@v3
