@@ -67,4 +67,6 @@ jobs:
         generateReleaseNotes: true
         commit: ${{ github.sha }}
         tag: ${{ github.run_number }}
+        name: gryphon-games-${{ github.run_number }}
+        
         
