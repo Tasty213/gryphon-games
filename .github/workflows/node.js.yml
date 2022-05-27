@@ -48,7 +48,7 @@ jobs:
     - name: Zip Release
       uses: TheDoctor0/zip-release@0.6.2
       with: 
-        directory: ./gryphon-games-dist/
+        directory: ./
         type: zip
         filename: ${{ github.ref_name }}-${{ github.run_id }}.zip # default is release.zip
         path: ./gryphon-games-dist/
