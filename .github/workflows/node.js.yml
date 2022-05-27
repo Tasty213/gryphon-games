@@ -9,6 +9,9 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  OUTPUT_FILE: ${{ github.ref_name }}-${{ github.run_id }}.zip
+
 jobs:
   test:
     
@@ -50,10 +53,10 @@ jobs:
       with: 
         directory: ./
         type: zip
-        filename: ${{ github.ref_name }}-${{ github.run_id }}.zip # default is release.zip
+        filename: ${{ env.OUTPUT_FILE }} # default is release.zip
         path: ./gryphon-games-dist/
     - name: Add zipped plugin as artifact
       uses: actions/upload-artifact@v3
       with:
-        name: ${{ github.GITHUB_REF_NAME }}-${{ github.GITHUB_RUN_ID }}.zip
-        path: ${{ github.GITHUB_REF_NAME }}-${{ github.GITHUB_RUN_ID }}.zip
+        name: ${{ env.OUTPUT_FILE }}
+        path: ${{ env.OUTPUT_FILE }}
