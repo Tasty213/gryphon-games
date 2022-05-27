@@ -62,7 +62,7 @@ jobs:
     - name: Create release
       uses: ncipollo/release-action@v1
       with:
-        artifacts: ${{ env.OUTPUT_FILE }}
+        artifacts: ./gryphon-games-dist/${{ env.OUTPUT_FILE }}
         generateReleaseNotes: true
         commit: ${{ github.sha }}
         tag: ${{ github.run_number }}
