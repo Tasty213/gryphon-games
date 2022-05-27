@@ -10,7 +10,7 @@ on:
     branches: [ master ]
 
 env:
-  OUTPUT_FILE: ${{ github.ref_name }}-${{ github.run_id }}.zip
+  OUTPUT_FILE: ./gryphon-games-dist/${{ github.ref_name }}-${{ github.run_id }}.zip
 
 jobs:
   test:
