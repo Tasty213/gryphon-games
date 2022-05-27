@@ -64,7 +64,6 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         artifacts: ${{ env.OUTPUT_FILE }}
-        token: ${{ secrets.GITHUB_TOKEN }}
         generateReleaseNotes: true
         commit: ${{ github.sha }}
         tag: ${{ github.run_number }}
