@@ -51,10 +51,9 @@ jobs:
     - name: Zip Release
       uses: TheDoctor0/zip-release@0.6.2
       with: 
-        directory: ./
+        directory: ./gryphon-games-dist/
         type: zip
         filename: ${{ env.OUTPUT_FILE }} # default is release.zip
-        path: ./gryphon-games-dist/
     - name: Add zipped plugin as artifact
       uses: actions/upload-artifact@v3
       with:
