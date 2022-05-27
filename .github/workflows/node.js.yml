@@ -65,3 +65,7 @@ jobs:
       with:
         artifacts: ${{ env.OUTPUT_FILE }}
         token: ${{ secrets.GITHUB_TOKEN }}
+        generateReleaseNotes: true
+        commit: ${{ github.commit_sha }}
+        tag: ${{ github.run_number }}
+        
