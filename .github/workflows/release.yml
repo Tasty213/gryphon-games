@@ -10,7 +10,7 @@ on:
     branches: [ master ]
 
 env:
-  OUTPUT_FILE: ./gryphon-games-dist/${{ github.ref_name }}-${{ github.run_id }}.zip
+  OUTPUT_FILE: ${{ github.ref_name }}-${{ github.run_id }}.zip
 
 jobs:
   test:
@@ -58,7 +58,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: ${{ env.OUTPUT_FILE }}
-        path: ${{ env.OUTPUT_FILE }}
+        path: ./gryphon-games-dist/${{ env.OUTPUT_FILE }}
     - name: Create release
       uses: ncipollo/release-action@v1
       with:
