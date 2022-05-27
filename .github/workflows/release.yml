@@ -54,11 +54,6 @@ jobs:
         directory: ./gryphon-games-dist/
         type: zip
         filename: ${{ env.OUTPUT_FILE }} # default is release.zip
-    - name: Add zipped plugin as artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: ${{ env.OUTPUT_FILE }}
-        path: ./gryphon-games-dist/${{ env.OUTPUT_FILE }}
     - name: Create release
       uses: ncipollo/release-action@v1
       with:
